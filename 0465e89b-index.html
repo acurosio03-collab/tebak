@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NAURA × GERDY — KAMU BOLEH NGETAWAIN GOMBALANKU, TAPI HABISKAN DULU SAMPAI AKHIR 😭💗💍</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#ffd6e7; --rose:#ff8fb8; --blush:#ffeef5; --cherry:#e0245e;
+  --milk:#fff8fb; --lav:#e6d9ff; --lav2:#b9a2f0; --ink:#4a2040; --soft:#8c5a7c;
+  --round:'Fredoka','Nunito','Segoe UI',system-ui,sans-serif;
+  --serif:'Lora',Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--round);color:var(--ink);min-height:100vh;
+  background:radial-gradient(circle at 15% 10%,var(--pink) 0,transparent 45%),
+             radial-gradient(circle at 90% 90%,var(--lav) 0,transparent 50%),
+             linear-gradient(160deg,var(--milk),#ffe9f3);
+  background-attachment:fixed;overflow-x:hidden;
+}
+#hearts{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.h{position:absolute;bottom:-40px;animation:rise linear forwards;opacity:0;will-change:transform}
+@keyframes rise{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:.75}100%{transform:translate(var(--dx),-115vh) rotate(25deg);opacity:0}}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+
+header.top{
+  position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;
+  padding:10px 14px;background:rgba(255,248,251,.85);backdrop-filter:blur(8px);
+  border-bottom:2px solid var(--pink);
+}
+.bar{flex:1;height:12px;background:var(--pink);border-radius:20px;overflow:hidden}
+#barfill{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rose),var(--cherry));border-radius:20px;transition:width .6s cubic-bezier(.3,1.4,.5,1)}
+#pct{font-weight:700;font-size:.85rem;min-width:38px;text-align:right;color:var(--cherry)}
+#snd{border:0;background:var(--cherry);color:#fff;border-radius:20px;padding:7px 12px;font:600 .8rem var(--round);cursor:pointer;white-space:nowrap}
+
+main{position:relative;z-index:2;max-width:720px;margin:0 auto;padding:22px 14px 60px}
+#stage.in{animation:pageIn .55s ease both}
+@keyframes pageIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+
+.card{background:rgba(255,255,255,.92);border:2px solid var(--pink);border-radius:28px;padding:26px 20px;box-shadow:0 14px 40px rgba(224,36,94,.12);margin-bottom:16px}
+.center{text-align:center}
+.tag{display:inline-block;background:var(--lav);color:#5a3aa0;font-weight:600;font-size:.75rem;letter-spacing:.06em;padding:5px 12px;border-radius:20px;margin-bottom:12px}
+h1,h2{font-weight:700;line-height:1.25}
+h1{font-size:clamp(1.5rem,6vw,2.1rem);color:var(--cherry)}
+h2{font-size:clamp(1.15rem,4.5vw,1.5rem);margin-bottom:16px}
+p{line-height:1.6;margin:10px 0}
+.lead{font-size:1.02rem}
+
+.btn{
+  font:600 1rem var(--round);color:#fff;background:linear-gradient(135deg,var(--rose),var(--cherry));
+  border:0;border-radius:40px;padding:13px 22px;cursor:pointer;box-shadow:0 6px 0 #a8123f,0 10px 18px rgba(224,36,94,.25);
+  transition:transform .1s;margin:6px 4px;
+}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #a8123f}
+.btn.big{font-size:1.08rem;padding:16px 26px;width:100%;max-width:420px}
+.btn.alt{background:linear-gradient(135deg,#c9b6ff,#8a7bd6);box-shadow:0 6px 0 #5f4fb0,0 10px 18px rgba(95,79,176,.25)}
+.btn.ghost{background:#fff;color:var(--cherry);box-shadow:0 4px 0 var(--pink);border:2px solid var(--pink)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.bounce{animation:bounce .45s}
+@keyframes bounce{0%{transform:scale(1)}30%{transform:scale(.88)}60%{transform:scale(1.1)}100%{transform:scale(1)}}
+
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;background:var(--blush);color:var(--ink);border:2px solid var(--pink);box-shadow:0 4px 0 var(--pink);padding:13px 14px;border-radius:20px;margin:0;font-weight:500;line-height:1.35}
+.opt b{flex:0 0 32px;height:32px;border-radius:50%;background:var(--cherry);color:#fff;display:grid;place-items:center}
+.opt.sel{background:#ffe0ec;border-color:var(--cherry)}
+.opt.dim{opacity:.55}
+.resp{margin-top:16px;background:#fff;border-left:6px solid var(--cherry);border-radius:16px;padding:14px 16px;box-shadow:0 6px 16px rgba(224,36,94,.1);animation:pop .4s cubic-bezier(.3,1.5,.5,1) both;line-height:1.55}
+.resp .who{display:block;font-weight:700;color:var(--cherry);font-size:.78rem;margin-bottom:4px}
+@keyframes pop{from{opacity:0;transform:scale(.85) translateY(10px)}to{opacity:1;transform:none}}
+.next{text-align:center;margin-top:12px}
+
+/* amplop */
+.env-wrap{display:grid;place-items:center;min-height:70vh;text-align:center}
+.envelope{position:relative;width:min(300px,82vw);height:200px;margin:0 auto;cursor:pointer;animation:wiggle 2.4s ease-in-out infinite}
+.envelope .back{position:absolute;inset:0;background:var(--rose);border-radius:14px;box-shadow:0 14px 30px rgba(224,36,94,.3)}
+.envelope .paper{position:absolute;left:12%;right:12%;top:10px;bottom:10px;background:#fff;border-radius:8px;transition:transform .7s;display:grid;place-items:center;font-size:2.2rem}
+.envelope .front{position:absolute;inset:0;border-radius:14px;background:
+  linear-gradient(to top right,#ff6fa3 49%,transparent 50%) left/50% 100% no-repeat,
+  linear-gradient(to top left,#ff7fae 49%,transparent 50%) right/50% 100% no-repeat}
+.envelope .flap{position:absolute;left:0;right:0;top:0;height:60%;background:#e85b90;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s;z-index:3;border-radius:14px 14px 0 0}
+.envelope .seal{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);font-size:2rem;z-index:4;transition:opacity .3s}
+.envelope.open{animation:none}
+.envelope.open .flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .paper{transform:translateY(-70px)}
+.envelope.open .seal{opacity:0}
+@keyframes wiggle{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg) translateY(-6px)}}
+.env-title{font-size:clamp(1.3rem,6vw,1.9rem);font-weight:700;color:var(--cherry);margin:34px 0 8px}
+.hint{color:var(--soft);font-size:.9rem}
+
+/* karakter */
+.duo{display:flex;justify-content:center;align-items:flex-end;gap:10px;margin:8px 0 18px}
+.char{width:clamp(80px,24vw,110px);height:auto;animation:bob 2.4s ease-in-out infinite;overflow:visible}
+.char.g{animation-delay:.7s}
+.char .eyes{transform-box:fill-box;transform-origin:center;animation:blink 4.5s infinite}
+.char .blush{animation:blushy 2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-7px) rotate(1.5deg)}}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes blushy{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.95;transform:scale(1.25)}}
+.mid{font-size:2.2rem;animation:beat 1s infinite;padding-bottom:30px}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+
+/* kecocokan */
+.score{font-size:clamp(1.1rem,5vw,1.5rem);font-weight:700;color:var(--cherry);margin:10px 0}
+.score span{font-size:clamp(2.4rem,12vw,3.6rem)}
+.meter{margin:12px 0;text-align:left}
+.meter label{display:flex;justify-content:space-between;font-size:.92rem;font-weight:500}
+.meter .track{height:12px;background:var(--pink);border-radius:20px;overflow:hidden;margin-top:4px}
+.meter .fill{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--lav2),var(--cherry));border-radius:20px;transition:width 1.1s ease}
+.note{font-size:.8rem;color:var(--soft);font-style:italic;margin-top:12px}
+.stat{background:var(--blush);border-radius:14px;padding:10px 12px;margin:8px 0;text-align:left;font-size:.93rem}
+
+/* ramalan */
+.machine{font-size:4rem;display:inline-block;animation:spin 1.2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cal{font-size:2.4rem;letter-spacing:8px;margin:6px 0}
+.agebtn.sel{background:linear-gradient(135deg,var(--rose),var(--cherry));color:#fff;border-color:var(--cherry)}
+.agebtn.sel b{background:#fff;color:var(--cherry)}
+.reveal{background:linear-gradient(135deg,#fff,var(--lav));border:2px dashed var(--lav2);border-radius:20px;padding:16px;margin:12px 0;animation:pop .5s both}
+.reveal h3{color:#5a3aa0;font-size:1.05rem;margin-bottom:6px}
+
+/* chat */
+.chat{display:flex;flex-direction:column;gap:10px;margin:10px 0}
+.bub{max-width:86%;padding:11px 14px;border-radius:18px;line-height:1.5;animation:pop .35s both;font-size:.97rem}
+.bub.g{background:#fff;border:2px solid var(--lav);align-self:flex-start;border-bottom-left-radius:4px}
+.bub.n{background:linear-gradient(135deg,var(--rose),var(--cherry));color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.bub small{display:block;font-weight:700;opacity:.7;margin-bottom:2px;font-size:.7rem}
+
+/* surat */
+.letter{font-family:var(--serif);background:#fffdf7;border:1px solid #f0dcc9;border-radius:6px;padding:28px 22px;box-shadow:0 14px 34px rgba(120,60,80,.15);background-image:repeating-linear-gradient(transparent 0 31px,rgba(255,143,184,.12) 31px 32px);color:#3b2536}
+.letter p{margin:0 0 16px;line-height:1.85;font-size:1.02rem;opacity:0;animation:fadeUp .8s forwards}
+.letter .sign{font-family:'Pacifico',cursive;color:var(--cherry);font-size:1.5rem}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* sertifikat */
+.cert{position:relative;background:#fffdf8;padding:34px 26px;text-align:center;border:3px solid var(--rose);outline:2px solid var(--lav2);outline-offset:-14px;border-radius:10px;box-shadow:0 14px 40px rgba(224,36,94,.18);font-family:var(--serif);overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cert .fl{position:absolute;width:62px;height:62px}
+.cert .fl.a{top:6px;left:6px}.cert .fl.b{top:6px;right:6px;transform:scaleX(-1)}
+.cert .fl.c{bottom:6px;left:6px;transform:scaleY(-1)}.cert .fl.d{bottom:6px;right:6px;transform:scale(-1)}
+.cert .orn{color:var(--cherry);letter-spacing:10px;font-size:1.1rem}
+.cert h2{font-family:var(--round);color:var(--cherry);font-size:clamp(1.2rem,5vw,1.9rem);margin:8px 0 4px}
+.cert .to{font-family:'Pacifico',cursive;font-size:clamp(2rem,9vw,3.2rem);color:#5a3aa0;margin:2px 0 6px}
+.cert ul{list-style:none;display:inline-block;text-align:left;margin:6px 0 10px}
+.cert li{margin:4px 0;font-size:.98rem}
+.cert li::before{content:'♥ ';color:var(--cherry)}
+.cert .sig{font-family:'Pacifico',cursive;font-size:1.9rem;color:var(--cherry);margin-top:8px;line-height:1.1}
+.cert .role{font-size:.82rem;max-width:380px;margin:2px auto;color:var(--soft)}
+.cert .date{font-size:.85rem;margin-top:10px}
+.cert .fine{font-size:.72rem;color:var(--soft);margin-top:8px;font-style:italic}
+
+footer{text-align:center;font-size:.75rem;color:var(--soft);margin-top:20px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:10px}
+.chip{border:2px solid var(--pink);background:#fff;color:var(--soft);border-radius:20px;padding:6px 12px;font:500 .8rem var(--round);cursor:pointer}
+
+@media print{
+  @page{size:A4 landscape;margin:8mm}
+  body{background:#fff!important}
+  header.top,#hearts,#confetti,.noprint,footer{display:none!important}
+  main{padding:0;max-width:none}
+  .cert{box-shadow:none;page-break-inside:avoid;padding:26px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+<canvas id="confetti"></canvas>
+<header class="top">
+  <div class="bar"><i id="barfill"></i></div>
+  <span id="pct">0%</span>
+  <button id="snd" type="button" aria-label="Musik dan suara">🎵 ON</button>
+</header>
+<main><div id="stage"></div>
+<footer>Dibuat khusus oleh GERDY untuk NAURA 💗 — semua hasil di sini cuma hiburan.</footer></main>
+
+<script>
+(function(){
+'use strict';
+var $=function(s){return document.querySelector(s)};
+var stage=$('#stage');
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var TOTAL=14;
+var st={age:null,score:0};
+
+/* ================= AUDIO ================= */
+var ac=null,master=null,muted=false,timer=null,bi=0,musicWanted=false;
+function initAudio(){
+  if(ac)return;
+  try{
+    ac=new (window.AudioContext||window.webkitAudioContext)();
+    master=ac.createGain();master.gain.value=muted?0:0.55;master.connect(ac.destination);
+  }catch(e){ac=null}
+}
+function tone(f,t,d,type,v,glideTo){
+  if(!ac)return;
+  var o=ac.createOscillator(),g=ac.createGain();
+  o.type=type||'sine';o.frequency.setValueAtTime(f,t);
+  if(glideTo)o.frequency.exponentialRampToValueAtTime(glideTo,t+d);
+  g.gain.setValueAtTime(0.0001,t);
+  g.gain.exponentialRampToValueAtTime(v||0.05,t+0.02);
+  g.gain.exponentialRampToValueAtTime(0.0001,t+d);
+  o.connect(g);g.connect(master);o.start(t);o.stop(t+d+0.05);
+}
+function sfx(kind){
+  if(!ac||muted)return;
+  var t=ac.currentTime+0.01,i;
+  if(kind==='pop'){tone(420,t,0.12,'sine',0.09,900)}
+  else if(kind==='sparkle'){[1318,1568,2093,2637].forEach(function(f,k){tone(f,t+k*0.07,0.25,'sine',0.04)})}
+  else if(kind==='giggle'){for(i=0;i<5;i++){tone(i%2?900:720,t+i*0.085,0.07,'triangle',0.05,i%2?1100:880)}}
+}
+var CH=[[261.63,329.63,392,523.25],[220,261.63,329.63,440],[174.61,220,261.63,349.23],[196,246.94,293.66,392]];
+var PAT=[0,1,2,3,2,1,2,1];
+function bar(){
+  if(!ac||muted)return;
+  var c=CH[bi%4],t=ac.currentTime+0.05,k;bi++;
+  tone(c[0]/2,t,3.4,'sine',0.05);
+  for(k=0;k<8;k++){tone(c[PAT[k]],t+k*0.45,1.1,'triangle',0.028)}
+}
+function startMusic(){
+  musicWanted=true;
+  if(!ac||timer)return;
+  if(ac.state==='suspended')ac.resume();
+  bar();timer=setInterval(bar,3600);
+}
+function stopMusic(){if(timer){clearInterval(timer);timer=null}}
+function updSnd(){$('#snd').textContent=muted?'🔇 OFF':'🎵 ON'}
+$('#snd').addEventListener('click',function(){
+  initAudio();
+  muted=!muted;
+  if(master)master.gain.value=muted?0:0.55;
+  if(muted){stopMusic()}else{musicWanted=true;startMusic()}
+  updSnd();
+});
+document.addEventListener('visibilitychange',function(){
+  if(!ac)return;
+  if(document.hidden){stopMusic();ac.suspend()}
+  else{ac.resume();if(musicWanted&&!muted)startMusic()}
+});
+
+/* ================= EFEK ================= */
+var heartsEl=$('#hearts');
+function heart(opts){
+  if(reduce)return;
+  if(heartsEl.childElementCount>24)return;
+  var s=document.createElement('span');s.className='h';
+  s.textContent=['💗','💖','💕','🩷','♥'][Math.floor(Math.random()*5)];
+  s.style.left=(opts&&opts.x!=null?opts.x:Math.random()*100)+'%';
+  s.style.fontSize=(12+Math.random()*16)+'px';
+  s.style.setProperty('--dx',((Math.random()-.5)*120)+'px');
+  var d=(opts&&opts.fast?3.5:7)+Math.random()*5;
+  s.style.animationDuration=d+'s';
+  heartsEl.appendChild(s);
+  setTimeout(function(){s.remove()},d*1000+200);
+}
+setInterval(function(){if(!document.hidden)heart()},1400);
+function burstHearts(n){for(var i=0;i<n;i++)setTimeout(function(){heart({x:25+Math.random()*50,fast:true})},i*90)}
+
+var cv=$('#confetti'),cx=cv.getContext('2d'),parts=[],raf=null;
+function sizeCv(){cv.width=innerWidth;cv.height=innerHeight}
+sizeCv();addEventListener('resize',sizeCv);
+function confetti(){
+  if(reduce)return;
+  var cols=['#ff8fb8','#e0245e','#b9a2f0','#ffd6e7','#fff','#ffd54f'],i;
+  for(i=0;i<110;i++)parts.push({x:innerWidth/2+(Math.random()-.5)*120,y:innerHeight*0.55,vx:(Math.random()-.5)*12,vy:-Math.random()*13-4,g:.32,s:5+Math.random()*6,c:cols[i%cols.length],r:Math.random()*6,vr:(Math.random()-.5)*.4,life:0});
+  if(!raf)raf=requestAnimationFrame(tick);
+}
+function tick(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  parts=parts.filter(function(p){return p.life<200&&p.y<cv.height+20});
+  parts.forEach(function(p){
+    p.life++;p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.r+=p.vr;
+    cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/3,p.s,p.s*.6);cx.restore();
+  });
+  if(parts.length){raf=requestAnimationFrame(tick)}else{raf=null;cx.clearRect(0,0,cv.width,cv.height)}
+}
+
+/* ================= UTIL ================= */
+function setProg(done){
+  var p=Math.max(0,Math.min(100,Math.round(done/TOTAL*100)));
+  $('#barfill').style.width=p+'%';$('#pct').textContent=p+'%';
+}
+function show(html,cb){
+  stage.classList.remove('in');
+  stage.innerHTML=html;
+  void stage.offsetWidth;
+  stage.classList.add('in');
+  window.scrollTo({top:0});
+  if(cb)cb();
+}
+function rand(a,b){return a+Math.floor(Math.random()*(b-a+1))}
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.btn,.chip');
+  if(!b)return;
+  b.classList.remove('bounce');void b.offsetWidth;b.classList.add('bounce');
+  sfx('pop');
+});
+
+function flower(cls){
+  var petals='',i;
+  for(i=0;i<5;i++)petals+='<circle cx="20" cy="9" r="7" transform="rotate('+(i*72)+' 20 20)"/>';
+  return '<svg class="fl '+cls+'" viewBox="0 0 40 40" aria-hidden="true"><g fill="#ff8fb8" opacity=".9">'+petals+'</g><circle cx="20" cy="20" r="5" fill="#ffd54f"/><path d="M34 34c-6-2-10-6-12-12" stroke="#8fcf9a" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>';
+}
+function char(who){
+  var n=who==='n';
+  var hairBack=n?'<path d="M18 60C14 14 106 14 102 60L102 100Q96 112 84 108L84 70L36 70L36 108Q24 112 18 100Z" fill="#5a3446"/>':'';
+  var shirt='<rect x="34" y="94" width="52" height="44" rx="20" fill="'+(n?'#ff8fb8':'#8a7bd6')+'"/>';
+  var face='<circle cx="60" cy="60" r="38" fill="#ffe0d0"/>';
+  var fringe=n?'<path d="M24 58C30 28 90 28 96 58C84 46 70 44 60 44C48 44 36 46 24 58Z" fill="#5a3446"/>'
+              :'<path d="M20 58C16 12 104 12 100 58C96 40 82 30 60 30C38 30 24 40 20 58Z" fill="#2e2540"/><path d="M50 30q8-14 22-4q-12-2-22 4z" fill="#2e2540"/>';
+  var feat='<g class="eyes"><ellipse cx="46" cy="64" rx="4" ry="5" fill="#3a1f33"/><ellipse cx="74" cy="64" rx="4" ry="5" fill="#3a1f33"/><circle cx="47.5" cy="62" r="1.4" fill="#fff"/><circle cx="75.5" cy="62" r="1.4" fill="#fff"/></g>'
+    +'<ellipse class="blush" cx="37" cy="76" rx="7" ry="4" fill="#ff8fb8"/><ellipse class="blush" cx="83" cy="76" rx="7" ry="4" fill="#ff8fb8"/>'
+    +'<path d="'+(n?'M54 78q6 6 12 0':'M52 78q8 7 16-2')+'" stroke="#c2185b" fill="none" stroke-width="2.5" stroke-linecap="round"/>';
+  var bow=n?'<g fill="#e0245e"><ellipse cx="88" cy="30" rx="9" ry="6" transform="rotate(-20 88 30)"/><ellipse cx="103" cy="27" rx="9" ry="6" transform="rotate(30 103 27)"/><circle cx="95" cy="29" r="4" fill="#ff8fb8"/></g>':'';
+  return '<svg class="char '+who+'" viewBox="0 0 120 140" aria-hidden="true"><ellipse cx="60" cy="136" rx="32" ry="5" fill="rgba(0,0,0,.08)"/>'+hairBack+shirt+face+fringe+feat+bow+'</svg>';
+}
+function nextBtn(label,id){return '<div class="next"><button class="btn" id="'+(id||'nx')+'">'+label+'</button></div>'}
+
+/* ================= DATA SOAL ================= */
+var Q=[
+{h:'INTEROGASI PERASAAN',q:'Naura, misalnya ada orang yang tiba-tiba sering ngajak kamu ngobrol. Menurutmu, kemungkinan dia kenapa?',
+ o:['Emang orangnya ramah.','Lagi gabut parah.','Ada yang bikin dia penasaran.'],love:[2],
+ r:['VALID. Orang ramah memang banyak. Makanya jangan langsung geer. Tapi jangan juga terlalu polos sampai orang udah ngasih kode pakai lampu sein pun kamu kira mau belok. 😭',
+    'WKWKWK KASIHAN BANGET, MOTIFNYA LANGSUNG DITURUNKAN JADI PENGANGGURAN. 😭 Tapi gabut bisa jadi awal obrolan yang ternyata menyenangkan.',
+    'EHEMMMM, JAWABANNYA MULAI MENCURIGAKAN NIH. 👀 Tapi penasaran itu baru awal. Kalau mau lebih dekat, tetap harus kenal beneran.']},
+{h:'GOMBALAN DENGAN PLOT TWIST',q:'Naura, menurutmu apa hal tersulit yang pernah dilakukan GERDY?',
+ o:['Bangun pagi.','Mengalah saat debat.','Mau mengirim chat tanpa memikirkan 17 kemungkinan balasan.'],love:[],
+ r:['Bangun pagi aja perjuangan. Pantas masa depannya perlu disusun dengan kalender dan alarm lima lapis. 😭',
+    'WADUH, KALAU INI BUTUH PENELITIAN LANJUTAN. Tapi katanya orang pintar tahu kapan harus menang dan kapan harus beli seblak biar suasana kembali damai. 🤣',
+    'NAH INI. NGETIK “HAI” BISA 3 DETIK, MIKIRIN LANJUTANNYA BISA 30 MENIT. 😭 Kadang yang bikin gugup bukan kata-katanya, tapi siapa yang bakal baca.']},
+{h:'UJIAN CALON PASANGAN KHAYALAN',q:'Kalau GERDY ngajak makan, lalu kamu bilang “terserah”, apa tindakan terbaik?',
+ o:['Memesan semua menu.','Bertanya kamu lagi ingin makan apa.','Langsung mengirim daftar 47 restoran.'],love:[],
+ r:['Selamat, kamu berhasil mengubah ajakan makan menjadi rapat anggaran keluarga. 😭💸',
+    'BENAR. Komunikasi adalah kunci. Karena cinta itu indah, tapi salah pesan makanan ketika lapar bisa menjadi awal perang dunia ketiga. 🤣',
+    'NAURA BARU BILANG TERSERAH, GERDY UDAH BIKIN GOOGLE MAPS JADI TESIS. 😭']},
+{h:'PERTANYAAN PALING MENCURIGAKAN',q:'Kalau ada orang yang bikin kamu tertawa setiap kali ngobrol, apa yang sebaiknya dilakukan?',
+ o:['Pertahankan sebagai teman yang menyenangkan.','Kenali lebih jauh kalau memang tertarik.','Minta dia buka cabang stand-up comedy.'],love:[1],
+ r:['SETUJU. Teman yang bikin hari lebih menyenangkan itu berharga. Nggak semua kedekatan harus buru-buru diberi label.',
+    'CIEEE, INI BARU JAWABAN YANG MEMBUKA KEMUNGKINAN. Tapi pelan-pelan aja, chemistry nggak bisa dipaksa kayak mengisi formulir pendaftaran. 💗',
+    'WKWKWK DARI PENDEKATAN BERUBAH JADI AUDISI KOMIKA. GERDY DISURUH BIKIN MATERI 15 MENIT DULU. 😭']},
+{h:'ROASTING MANJA',q:'Menurutmu, kalau GERDY jadi karakter dalam film romantis, dia bakal jadi siapa?',
+ o:['Tokoh utama yang keren.','Sahabat kocak yang selalu ada.','Karakter yang penonton suruh cepat-cepat menyatakan perasaan.'],love:[],
+ r:['NAURA, TOLONG JANGAN MEMBERIKAN PENGHARGAAN SEBELUM FILMNYA SELESAI. 😭 Tapi terima kasih atas kepercayaan yang belum tentu pantas ini.',
+    'SAHABAT KOCAK? Waduh, GERDY HARUS MEMERIKSA KONTRAKNYA DULU. Jangan sampai sepanjang film cuma jadi tempat curhat tokoh utama. 🤣',
+    'ANJIR, PENONTON AJA UDAH CAPEK LIHAT GERDY MUTER-MUTER. “BANG, NGOMONG AJA BANG, JANGAN BIKIN SEASON 2!” 😭']},
+{h:'GOMBALAN YANG NGGAK KELIHATAN GOMBAL',q:'Naura, apa yang bikin sebuah obrolan terasa menyenangkan?',
+ o:['Harus selalu lucu.','Bisa menjadi diri sendiri.','Balasannya harus cepat.'],love:[1],
+ r:['Kalau harus selalu lucu, GERDY BISA KEHABISAN MATERI DAN BERUBAH JADI PRESENTASI KELOMPOK. 😭',
+    'INI JAWABAN BAGUS. Soalnya obrolan yang nyaman nggak harus selalu punya punchline. Kadang bisa ketawa bareng, kadang bisa diam tanpa harus pura-pura.',
+    'WKWKWK INI CHAT APA LOMBA LARI? 😭 Tapi memang menyenangkan kalau orang yang diajak ngobrol juga meluangkan waktu.']},
+{h:'SKENARIO MASA DEPAN',q:'Misalnya 10 tahun lagi kamu ketemu GERDY lagi. Kira-kira apa yang terjadi?',
+ o:['Saling menyapa dan tertawa mengenang masa lalu.','Masih berteman.','Plot twist, ternyata punya cerita panjang bersama.'],love:[2],
+ r:['BAYANGIN KETEMU TERUS BILANG, “INGAT NGGAK DULU ADA WEBSITE RAMALAN NIKAH?” MALUNYA BARU DATANG 10 TAHUN KEMUDIAN. 😭',
+    'Pertemanan yang bertahan lama juga cerita yang bagus. Yang penting orang-orangnya tetap saling menghargai.',
+    'WOI, INI BARU PILIHAN YANG BIKIN PENULIS FILM LANGSUNG BUKA LAPTOP. 😭💍 Tapi masa depan bukan spoiler yang bisa kita pastikan sekarang.']},
+{h:'FINAL BOSS',q:'Naura, kalau GERDY bilang dia sengaja membuat website ini khusus buat kamu, reaksi kamu apa?',
+ o:['Wah, niat banget.','GERDY KURANG KERJAAN YA? 😭','Aku mau lihat sampai akhir dulu.'],love:[0],
+ r:['HEHEHE, TERIMA KASIH SUDAH MENGAKUI USAHA SANG PENGEMBANG. BUG-NYA MUNGKIN MASIH ADA, TAPI NIATNYA NGGAK DI-COPY DARI TEMPLATE. 😭💗',
+    'JUJUR, ITU PERTANYAAN YANG JUGA DITANYAKAN OLEH ORANG YANG MEMBUAT WEBSITE INI. 😭 Tapi kalau bisa bikin kamu ketawa, setidaknya waktunya nggak terbuang sia-sia.',
+    'OKE, LANJUTKAN SAMPAI AKHIR. HADIAHNYA BUKAN UANG, BUKAN IPHONE, TAPI SEBUAH PENGALAMAN YANG MUNGKIN AKAN KAMU CERITAKAN SAMBIL KETAWA. 🤣']}
+];
+
+/* ================= LAYAR ================= */
+function intro(){
+  setProg(0);
+  show('<div class="env-wrap"><div>'
+   +'<div class="envelope" id="env" role="button" tabindex="0" aria-label="Buka amplop"><div class="back"></div><div class="paper">💗</div><div class="front"></div><div class="flap"></div><div class="seal">💌</div></div>'
+   +'<div class="env-title">KHUSUS UNTUK NAURA 💗</div>'
+   +'<div class="hint">ketuk amplopnya untuk membuka 👆</div></div></div>',
+  function(){
+    var env=$('#env'),done=false;
+    function open(){
+      if(done)return;done=true;
+      initAudio();if(!muted)startMusic();
+      sfx('sparkle');env.classList.add('open');burstHearts(8);
+      setTimeout(welcome,1100);
+    }
+    env.addEventListener('click',open);
+    env.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')open()});
+  });
+}
+
+function welcome(){
+  setProg(0);
+  show('<section class="card center">'
+   +'<div class="duo">'+char('n')+'<div class="mid">💌</div>'+char('g')+'</div>'
+   +'<h1>WOI, NAURA! AKHIRNYA DATENG JUGA 😭</h1>'
+   +'<p class="lead">Selamat datang di sebuah eksperimen yang dibuat oleh GERDY, manusia yang entah kenapa punya waktu untuk membuat website khusus buat kamu.</p>'
+   +'<p class="lead">Di sini kamu bakal menghadapi tebak-tebakan, tes kecocokan, pertanyaan jebakan, dan ramalan nikah yang keakuratannya berada di antara ilmu pengetahuan dan halu tingkat tinggi.</p>'
+   +'<p class="lead">Tenang, nggak ada ujian matematika. Aku tahu kita masih punya trauma masing-masing. 😭</p>'
+   +'<button class="btn big" id="go">GAS, BONGKAR KEGILAAN GERDY 🤣</button>'
+   +'<div class="hint" style="margin-top:14px">atau lompat ke bagian:</div>'
+   +'<div class="chips"><button class="chip" data-j="quiz">🎮 Tebak-tebakan</button><button class="chip" data-j="compat">💗 Kecocokan</button><button class="chip" data-j="ramal">💍 Ramalan</button><button class="chip" data-j="flirt">😏 Flirting</button><button class="chip" data-j="letter">💌 Surat</button><button class="chip" data-j="cert">🎓 Sertifikat</button></div>'
+   +'</section>',
+  function(){
+    $('#go').onclick=function(){sfx('giggle');setProg(0);quiz(0)};
+    document.querySelectorAll('.chip').forEach(function(c){
+      c.onclick=function(){
+        var j=c.getAttribute('data-j');
+        if(j==='quiz'){setProg(0);quiz(0)}
+        else if(j==='compat'){setProg(8);compat()}
+        else if(j==='ramal'){setProg(9);ramalan()}
+        else if(j==='flirt'){setProg(10);flirt(0)}
+        else if(j==='letter'){setProg(13);letter()}
+        else if(j==='cert'){setProg(14);cert()}
+      };
+    });
+  });
+}
+
+function quiz(i){
+  var q=Q[i];
+  show('<section class="card"><div class="tag">SOAL '+(i+1)+' / 8 — '+q.h+'</div><h2>'+q.q+'</h2><div class="opts">'
+   +q.o.map(function(t,k){return '<button class="btn opt" data-k="'+k+'"><b>'+'ABC'.charAt(k)+'</b><span>'+t+'</span></button>'}).join('')
+   +'</div><div id="out"></div></section>',
+  function(){
+    var answered=false,opts=document.querySelectorAll('.opt');
+    opts.forEach(function(b){
+      b.onclick=function(){
+        if(answered)return;answered=true;
+        var k=+b.getAttribute('data-k');
+        opts.forEach(function(o){o.classList.add(o===b?'sel':'dim')});
+        sfx('giggle');
+        if(q.love.indexOf(k)>-1){burstHearts(7);sfx('sparkle')}
+        setProg(i+1);
+        $('#out').innerHTML='<div class="resp"><span class="who">GERDY BILANG:</span>'+q.r[k]+'</div>'+nextBtn(i<7?'Lanjut ke soal '+(i+2)+' →':'Lanjut ke lab rahasia 🔬 →');
+        $('#nx').onclick=function(){if(i<7)quiz(i+1);else compat()};
+        $('#out').scrollIntoView({behavior:'smooth',block:'center'});
+      };
+    });
+  });
+}
+
+function compat(){
+  show('<section class="card center"><div class="tag">LAB RAHASIA</div>'
+   +'<h2>TES KECOCOKAN PALING ILMIAH MENURUT ORANG YANG BUKAN ILMUWAN.</h2>'
+   +'<div class="duo">'+char('n')+'<div class="mid" id="mid">💗</div>'+char('g')+'</div>'
+   +'<button class="btn big" id="an">ANALISIS DATA KAMI 🔬</button><div id="res"></div></section>',
+  function(){
+    $('#an').onclick=function(){
+      var btn=$('#an');btn.disabled=true;btn.textContent='Menghitung... 🧪';
+      sfx('sparkle');
+      var score=rand(85,99);st.score=score;
+      var m=[rand(90,99),rand(86,98),rand(90,99)];
+      $('#res').innerHTML='<div class="score">KECOCOKAN SIMULASI: <span id="sc">0</span>%</div><div id="det"></div>';
+      var t0=performance.now(),dur=2200;
+      (function step(now){
+        var p=Math.min(1,(now-t0)/dur);
+        $('#sc').textContent=Math.round(score*(1-Math.pow(1-p,3)));
+        if(p<1){requestAnimationFrame(step)}else{finish()}
+      })(t0);
+      function finish(){
+        btn.style.display='none';
+        confetti();burstHearts(10);sfx('sparkle');setProg(9);
+        $('#det').innerHTML='<p style="font-size:1.3rem;font-weight:700;color:#e0245e">'+score+'% WOI?! 😭💗</p>'
+         +'<div class="stat"><b>Rinciannya:</b></div>'
+         +'<div class="meter"><label><span>Potensi ketawa bareng</span><b>'+m[0]+'%</b></label><div class="track"><i class="fill" data-w="'+m[0]+'"></i></div></div>'
+         +'<div class="meter"><label><span>Potensi debat soal makanan</span><b>'+m[1]+'%</b></label><div class="track"><i class="fill" data-w="'+m[1]+'"></i></div></div>'
+         +'<div class="meter"><label><span>Potensi salah tingkah</span><b>'+m[2]+'%</b></label><div class="track"><i class="fill" data-w="'+m[2]+'"></i></div></div>'
+         +'<div class="stat">Potensi saling memahami: <b>belum bisa dinilai cuma lewat tombol.</b></div>'
+         +'<div class="stat">Potensi GERDY terlalu percaya diri setelah melihat hasil: <b>100%.</b> 😭</div>'
+         +'<button class="btn alt" id="why">KOK BISA TINGGI BANGET?!</button><div id="why-out"></div>'
+         +'<p class="note">*Persentase ini cuma simulasi hiburan dan akan berubah kalau diulang. Bukan ukuran kecocokan yang sebenarnya.</p>';
+        setTimeout(function(){document.querySelectorAll('.fill').forEach(function(f){f.style.width=f.getAttribute('data-w')+'%'})},60);
+        $('#why').onclick=function(){
+          this.disabled=true;sfx('giggle');
+          $('#why-out').innerHTML='<div class="resp" style="text-align:left"><span class="who">PENJELASAN RESMI:</span>Karena algoritmanya dikembangkan oleh GERDY, diuji oleh rasa penasaran, dan diaudit oleh harapan yang sedikit terlalu optimistis. 🤣</div>'+nextBtn('Lanjut ke ramalan masa depan 🔮 →');
+          $('#nx').onclick=ramalan;
+        };
+      }
+    };
+  });
+}
+
+var RAMAL={
+ 0:'Kalender semesta bilang: masih banyak waktu buat menyelesaikan mimpi-mimpimu dulu. Undangan cetak belum perlu dipesan, yang penting kamu nggak buru-buru karena tekanan siapa pun.',
+ 1:'Kalender semesta mendeteksi fase “banyak teman mulai kirim undangan”. Tapi keputusannya tetap hak kamu, bukan hak grup WhatsApp alumni.',
+ 2:'Kalender semesta bilang pilihan yang matang itu keren. Lebih baik menunggu orang yang tepat daripada ikut-ikutan tren dan terpaksa pakai gaun buat jadwal orang lain.',
+ 3:'Prioritas utama terdeteksi: JAJAN. Semesta menyetujui. Ramalan resmi ditunda sampai seblak dan bakso selesai dihabiskan. 🍜'
+};
+function ramalan(){
+  st.age=null;
+  show('<section class="card center"><div class="tag">MESIN RAMALAN</div>'
+   +'<h2>NAURA × GERDY: KAPAN UNDANGAN NIKAHNYA TURUN? 😭</h2>'
+   +'<div class="cal">📅 💍 🔮</div>'
+   +'<p class="lead">Kalau suatu hari kamu ingin menikah, kamu membayangkan usia berapa?</p>'
+   +'<div class="opts" style="text-align:left">'
+   +['Di bawah 25 tahun.','25–30 tahun.','Di atas 30 tahun.','BELUM MIKIR, MASIH MAU JAJAN. 😭'].map(function(t,k){return '<button class="btn opt agebtn" data-k="'+k+'"><b>'+'ABCD'.charAt(k)+'</b><span>'+t+'</span></button>'}).join('')
+   +'</div><button class="btn big" id="open" disabled style="margin-top:14px">BUKA RAMALAN MASA DEPAN 🔮</button><div id="out"></div></section>',
+  function(){
+    var ab=document.querySelectorAll('.agebtn');
+    ab.forEach(function(b){b.onclick=function(){
+      ab.forEach(function(x){x.classList.remove('sel')});b.classList.add('sel');
+      st.age=+b.getAttribute('data-k');$('#open').disabled=false;sfx('sparkle');
+    }});
+    $('#open').onclick=function(){
+      if(st.age===null)return;
+      ab.forEach(function(x){x.disabled=true});this.disabled=true;
+      var lines=['Membaca kalender semesta…','Menghitung jumlah undangan teman…','Menanyakan pendapat seblak…'],i=0;
+      $('#out').innerHTML='<div style="margin-top:14px"><span class="machine">🔮</span><p id="ml" class="hint">'+lines[0]+'</p></div>';
+      var iv=setInterval(function(){
+        i++;
+        if(i<lines.length){$('#ml').textContent=lines[i]}
+        else{clearInterval(iv);result()}
+      },800);
+    };
+  });
+  function result(){
+    sfx('sparkle');burstHearts(6);setProg(10);
+    $('#out').innerHTML='<div class="reveal"><h3>HASIL RAMALAN: MASIH DIRAHASIAKAN OLEH SEMESTA.</h3><p>'+RAMAL[st.age]+'</p>'
+     +'<p>Calon pasangan Naura belum bisa dibocorkan. Persyaratannya: harus saling nyaman, bisa komunikasi, menghargai batasan, dan nggak cuma jago bikin gombalan.</p></div>'
+     +'<h2 style="margin-top:16px">APAKAH GERDY BISA MENDAFTAR?</h2>'
+     +'<div class="opts" style="text-align:left"><button class="btn opt reg" data-k="0"><b>A</b><span>BOLEH IKUT SELEKSI 👀</span></button>'
+     +'<button class="btn opt reg" data-k="1"><b>B</b><span>LIHAT NANTI YA 😭</span></button>'
+     +'<button class="btn opt reg" data-k="2"><b>C</b><span>WKWKWK KAMU NGADI-NGADI.</span></button></div><div id="reg-out"></div>';
+    var RR=['BAIK, PENDAFTARAN DIBUKA. GERDY HARUS MENYERAHKAN CV, RIWAYAT KESERIUSAN, KEMAMPUAN KOMUNIKASI, DAN BUKTI BISA MENDENGARKAN TANPA MOTONG PEMBICARAAN. 😭💍',
+            'SIAP, KAK. STATUS PENDAFTARAN: MENUNGGU. TIDAK ADA TEKANAN, TIDAK ADA DEADLINE, DAN TIDAK ADA TAGIHAN EMOSIONAL. 🤣',
+            'WKWKWK BENAR JUGA. GERDY BIKIN WEBSITE, TERUS WEBSITE-NYA MALAH JADI TEMPAT DIA MENGUJI KEBERANIANNYA SENDIRI. 😭'];
+    var rb=document.querySelectorAll('.reg'),done=false;
+    rb.forEach(function(b){b.onclick=function(){
+      if(done)return;done=true;
+      var k=+b.getAttribute('data-k');
+      rb.forEach(function(o){o.classList.add(o===b?'sel':'dim')});
+      sfx('giggle');if(k===0)burstHearts(6);
+      $('#reg-out').innerHTML='<div class="resp" style="text-align:left"><span class="who">PANITIA SELEKSI:</span>'+RR[k]+'</div>'+nextBtn('Lanjut ke game flirting 😏 →');
+      $('#nx').onclick=function(){flirt(0)};
+      $('#reg-out').scrollIntoView({behavior:'smooth',block:'center'});
+    }});
+    $('#open').style.display='none';
+    document.querySelectorAll('.agebtn').forEach(function(x){x.style.display='none'});
+    $('#out').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+
+var FL=[
+ {intro:'GERDY mengirim pesan: “Naura, aku punya pertanyaan penting.”',q:'Kamu jawab apa?',
+  o:['APAAN?','UTANG KAMU BERAPA? 😭','LANGSUNG AJA, JANGAN BIKIN PENASARAN.'],
+  r:['Nah, singkat tapi penuh rasa penasaran. Respons kelas A. 😭 Pertanyaannya: kamu tim seblak atau bakso? Ini penting, menentukan arah diplomasi jajan kita ke depan.',
+     'WKWKWK KENAPA LANGSUNG FINANCIAL CHECK-UP 😭 Tenang, pertanyaannya cuma: kamu tim seblak atau bakso? Aku harus tahu sebelum rapat kabinet jajan dimulai.',
+     'SIAP, LANGSUNG. Pertanyaannya: kamu tim seblak atau bakso? Maaf kalau kamu kecewa karena bukan pertanyaan hidup dan mati. Tapi buat orang lapar, ini setingkat itu. 🤣']},
+ {intro:'Kalau GERDY tiba-tiba memuji kamu…',q:'Reaksimu?',
+  o:['MAKASIH HEHE.','AH, BISA AJA KAMU.','KAMU BUTUH SESUATU YA? 👀'],
+  r:['Sama-sama! Jawaban paling sehat sedunia. Nggak pakai drama, nggak pakai audit niat. Pujianku diterima dengan sopan. Terharu, ini kemajuan. 😭',
+     '“Bisa aja kamu” itu gabungan malu, nggak percaya, dan senyum yang ditahan. Aku nggak bilang kamu begitu ya, cuma analisis bahasa. 🤣',
+     'NAH KAN, REPUTASI ORANG BAIK SUDAH RUNTUH SEBELUM SEMPAT BERKEMBANG. 😭 Padahal kali ini pujiannya gratis, tidak ada biaya administrasi.']},
+ {intro:'Kalau suatu hari kalian jalan bareng…',q:'Siapa yang bakal menentukan tempat makan?',
+  o:['Naura.','Gerdy.','Yang penting dua-duanya setuju.'],
+  r:['AMAN. Aku ikut asal tempatnya ada tempat duduk dan nggak antre dua jam. Syarat tambahan: jangan bilang “terserah” habis itu menolak tiga usulanku. 😭',
+     'Siap, tapi aku kasih peringatan: 40 menit buat memilih, 20 menit mikir kamu bakal suka atau nggak, dan 5 menit membatalkan semuanya. Kamu masih sanggup? 😭',
+     'INI JAWABAN YANG BIKIN KONSULTAN HUBUNGAN TEPUK TANGAN. Kita mulai dari tiga pilihan, saling coret satu, sisanya sepakat. Demokrasi jajan. 💗']}
+];
+function flirt(n){
+  var f=FL[n];
+  show('<section class="card"><div class="tag">GAME FLIRTING '+(n+1)+' / 3</div>'
+   +'<div class="chat"><div class="bub g"><small>GERDY</small>'+f.intro+'</div></div>'
+   +'<h2 style="margin-top:6px">'+f.q+'</h2><div class="opts">'
+   +f.o.map(function(t,k){return '<button class="btn opt" data-k="'+k+'"><b>'+'ABC'.charAt(k)+'</b><span>'+t+'</span></button>'}).join('')
+   +'</div></section>',
+  function(){
+    var done=false,opts=document.querySelectorAll('.opt');
+    opts.forEach(function(b){b.onclick=function(){
+      if(done)return;done=true;
+      var k=+b.getAttribute('data-k');
+      opts.forEach(function(o){o.classList.add(o===b?'sel':'dim')});
+      var chat=document.querySelector('.chat');
+      chat.insertAdjacentHTML('beforeend','<div class="bub n"><small>NAURA</small>'+f.o[k]+'</div>');
+      sfx('pop');setProg(11+n);
+      setTimeout(function(){
+        chat.insertAdjacentHTML('beforeend','<div class="bub g"><small>GERDY</small>'+f.r[k]+'</div>');
+        sfx('giggle');
+        var c=document.querySelector('.card');
+        c.insertAdjacentHTML('beforeend',nextBtn(n<2?'Skenario berikutnya →':'Buka surat rahasia 💌 →'));
+        $('#nx').onclick=function(){if(n<2)flirt(n+1);else letter()};
+        $('#nx').scrollIntoView({behavior:'smooth',block:'center'});
+      },650);
+    }});
+  });
+}
+
+var LETTER=[
+ 'Buat Naura,',
+ 'WKWKWK, akhirnya kamu sampai juga di bagian terakhir. 😭💗',
+ 'Aku nggak tahu berapa kali kamu ketawa selama main tadi, tapi semoga setidaknya ada satu bagian yang berhasil bikin hari kamu sedikit lebih menyenangkan.',
+ 'Jujur, aku sengaja bikin ini bukan cuma buat menaruh kata-kata manis di layar. Aku pengin bikin sesuatu yang bisa kamu mainkan, sesuatu yang punya cerita, dan sesuatu yang terasa beda dari chat biasa.',
+ 'Kadang aku memang suka bercanda, kadang gombalanku bisa bikin orang mempertanyakan kewarasan, dan kadang aku sendiri bingung kenapa kepikiran bikin ide seperti ini. 😭',
+ 'Tapi di balik semua candaan itu, aku benar-benar berharap kamu selalu punya alasan untuk tersenyum, punya tempat untuk bercerita ketika capek, dan punya orang-orang yang memperlakukanmu dengan baik.',
+ 'Aku nggak bisa menjanjikan siapa yang akan ada di masa depanmu. Aku juga nggak mau memaksakan cerita yang bahkan belum dimulai.',
+ 'Kalau suatu hari kita punya kesempatan untuk saling mengenal lebih jauh, aku ingin itu terjadi dengan cara yang nyaman, jujur, dan tanpa tekanan.',
+ 'Kalau sekarang kita masih sebatas teman, itu juga nggak apa-apa. Aku tetap senang bisa membuat sesuatu yang khusus untukmu.',
+ 'Terima kasih sudah memainkan website absurd ini sampai selesai, Naura.',
+ 'Dari seseorang yang menghabiskan waktu membuat kode, menyusun gombalan, dan berharap punchline-nya nggak kamu anggap sebagai tindak pidana:',
+ '<span class="sign">GERDY 💗</span>',
+ 'P.S. Kalau kamu ketawa sendirian, jangan salahkan aku. Tapi kalau kamu senyum-senyum pas baca namaku, nah… aku nggak punya bukti, jadi aku nggak akan menyimpulkan apa-apa. WKWKWK. 😭🤣'
+];
+function letter(){
+  setProg(13);
+  show('<div class="env-wrap"><div>'
+   +'<div class="envelope" id="env" role="button" tabindex="0" aria-label="Ketuk untuk membuka surat"><div class="back"></div><div class="paper">💌</div><div class="front"></div><div class="flap"></div><div class="seal">💗</div></div>'
+   +'<div class="env-title">SURAT RAHASIA 💌</div><div class="hint">ketuk amplopnya untuk membuka 👆</div></div></div>',
+  function(){
+    var env=$('#env'),done=false;
+    function open(){
+      if(done)return;done=true;
+      sfx('sparkle');env.classList.add('open');burstHearts(8);
+      setTimeout(paper,950);
+    }
+    env.addEventListener('click',open);
+    env.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')open()});
+  });
+  function paper(){
+    show('<section class="letter">'+LETTER.map(function(p,i){return '<p style="animation-delay:'+(i*0.55)+'s">'+p+'</p>'}).join('')+'</section>'
+     +'<div class="next" style="opacity:0;animation:fadeUp .8s '+(LETTER.length*0.55+0.4)+'s forwards"><button class="btn" id="nx">Ambil sertifikat 🎓 →</button></div>',
+    function(){
+      burstHearts(8);setProg(14);
+      setTimeout(confetti,LETTER.length*550);
+      $('#nx').onclick=cert;
+    });
+  }
+}
+
+function cert(){
+  setProg(14);
+  var d=new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});
+  show('<div class="cert" id="cert">'+flower('a')+flower('b')+flower('c')+flower('d')
+   +'<div class="orn">♥ ❀ ♥</div>'
+   +'<h2>SERTIFIKAT KELULUSAN UJIAN KEGEMASAN</h2>'
+   +'<p>Diberikan kepada:</p><div class="to">NAURA</div>'
+   +'<p>Atas keberhasilannya:</p>'
+   +'<ul><li>Menyelesaikan tebak-tebakan absurd.</li><li>Bertahan menghadapi flirting GERDY.</li><li>Menyelesaikan tes kecocokan tidak resmi.</li><li>Menghadapi ramalan nikah tanpa kehilangan kewarasan.</li></ul>'
+   +'<div class="sig">GERDY</div>'
+   +'<div class="role">Kepala Departemen Gombalan dan Pengembangan Website yang Tidak Diminta Siapa-Siapa. 😭</div>'
+   +'<div class="date">Dikeluarkan pada '+d+'</div>'
+   +'<div class="fine">Sertifikat ini hanya untuk hiburan. 💗</div></div>'
+   +'<div class="next noprint"><button class="btn" id="pr">Cetak / Simpan PDF 🖨️</button><button class="btn alt" id="nx">Lanjut ke ending →</button></div>',
+  function(){
+    sparkleOnce();
+    $('#pr').onclick=function(){window.print()};
+    $('#nx').onclick=ending;
+  });
+  function sparkleOnce(){sfx('sparkle');burstHearts(6)}
+}
+
+function ending(){
+  setProg(14);
+  show('<section class="card center"><div class="tag">ENDING</div>'
+   +'<h2>Gimana pengalamannya, Naura?</h2>'
+   +'<div class="duo">'+char('n')+'<div class="mid">💗</div>'+char('g')+'</div>'
+   +'<button class="btn big" id="e1">WKWKWK GUE KETAWA 😭</button>'
+   +'<button class="btn big alt" id="e2">GOMBALAN LU NGGAK NGOTAK 🫵</button>'
+   +'<div id="eo"></div>'
+   +'<div style="margin-top:18px"><button class="btn ghost" id="again">MAIN LAGI</button><button class="btn ghost" id="relet">BUKA SURAT LAGI</button><button class="btn ghost" id="menu">KEMBALI KE MENU</button></div></section>',
+  function(){
+    $('#e1').onclick=function(){
+      sfx('giggle');confetti();burstHearts(10);
+      $('#eo').innerHTML='<div class="resp" style="text-align:left"><span class="who">GERDY:</span>MISSION COMPLETE! GERDY BERHASIL MEMBUAT SATU WEBSITE, MENGHABISKAN WAKTU, DAN MENDAPAT PENGAKUAN BAHWA HUMORNYA SETIDAKNYA TIDAK GAGAL TOTAL. 🤣💗</div>';
+    };
+    $('#e2').onclick=function(){
+      sfx('giggle');
+      $('#eo').innerHTML='<div class="resp" style="text-align:left"><span class="who">GERDY:</span>KRITIK DITERIMA. TIM PENGEMBANG AKAN MENGADAKAN RAPAT EVALUASI, MEMBELI SEBLAK, DAN MEMPERTIMBANGKAN PENSIUN DARI DUNIA PERCINTAAN SELAMA 7 MENIT. 😭</div>';
+    };
+    $('#again').onclick=function(){setProg(0);quiz(0)};
+    $('#relet').onclick=letter;
+    $('#menu').onclick=welcome;
+  });
+}
+
+intro();
+})();
+</script>
+</body>
+</html>
